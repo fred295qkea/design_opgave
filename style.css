@@ -1,0 +1,310 @@
+:root {
+  --text-color: #e6e5de;
+  --bg-col: #c0c0be;
+  --accent-col1: #feae39;
+  --accent-col2: #57bee6;
+  --dark-col: #3d424a;
+}
+
+.a_card,
+.b_card {
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  i,
+  a {
+    color: var(--text-color);
+  }
+}
+
+header {
+  border-bottom: 2px solid black;
+  margin: 20px;
+}
+
+header nav ul {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin: 20px;
+}
+header nav ul li a:hover {
+  color: gray;
+}
+
+/* Opgave A */
+.a_card_wrapper {
+  container-type: inline-size;
+  container-name: card;
+}
+.a_card {
+  margin: auto;
+  background-color: var(--dark-col);
+  display: grid;
+  resize: vertical;
+  max-width: 80%;
+  transition: all 1s ease;
+
+  .buttons {
+    text-align: center;
+  }
+
+  .socials {
+    display: flex;
+    gap: 20px;
+  }
+
+  .socials > * {
+    background-color: var(--accent-col1);
+    padding: 15px;
+    border-radius: 50%;
+  }
+}
+
+.a_card p,
+.a_card div {
+  padding: 1rem;
+}
+
+.a_card div:last-child {
+  place-self: center;
+}
+
+@container card (width > 340px) {
+  .a_card {
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: auto;
+  }
+
+  .a_card p {
+    grid-column: span 2;
+  }
+
+  .a_card img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    margin: 10px;
+    border-radius: 5px;
+  }
+
+  .buttons {
+    grid-column: span 2;
+  }
+}
+
+@container card (width > 515px) {
+  .a_card {
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  .a_card p {
+    grid-column: 2;
+    grid-row: 2 / span 2;
+    place-self: start center;
+  }
+
+  .title {
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  .buttons {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .a_card img {
+    aspect-ratio: auto;
+    grid-row: 1 / span 2;
+    grid-column: 1;
+    place-self: start center;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 0;
+  }
+}
+
+@container card (width > 690px) {
+  .a_card img {
+    scale: 115%;
+    translate: -15%;
+  }
+}
+
+/* Opgave B */
+
+label {
+  color: var(--text-color);
+}
+
+.b_card_container {
+  container-type: inline-size;
+  container-name: bcontain;
+}
+
+.b_card {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  background-color: var(--bg-col);
+
+  h2,
+  h3,
+  h4 {
+    color: var(--accent-col1);
+  }
+}
+
+.person {
+  grid-row: span 2;
+  background-color: var(--dark-col);
+}
+
+.stat {
+  background-color: var(--dark-col);
+  border-radius: 20px;
+  padding: 15px;
+  margin: 10px;
+}
+
+.person img {
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  width: 50%;
+}
+
+.radio {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px;
+}
+.often {
+  display: flex;
+  gap: 2px;
+}
+
+.category {
+  display: flex;
+  justify-content: space-between;
+}
+
+@container bcontain (width > 500px) {
+  .radio {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .pic_name {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+/* Opgave C */
+
+.c_card_wrapper {
+  container-type: inline-size;
+  container-name: ccontainer;
+}
+
+.grayspace {
+  display: none;
+}
+
+.c_card {
+  max-width: 1400px;
+  margin: auto;
+  display: grid;
+
+  img {
+    aspect-ratio: 1/1;
+  }
+
+  h1 {
+    color: var(--accent-col1);
+  }
+}
+
+.c_card > :not(img) {
+  padding: 20px;
+}
+
+.knap {
+  display: flex;
+
+  p:first-child {
+    background-color: var(--dark-col);
+    color: var(--text-color);
+    padding-inline: 10px;
+  }
+
+  p:last-child {
+    background-color: var(--accent-col1);
+    padding-inline: 5px;
+  }
+}
+
+@container ccontainer (width > 600px) {
+  .c_card {
+    grid-template-columns: 3fr 2fr;
+
+    img {
+      aspect-ratio: auto;
+      grid-column: 1;
+      grid-row: 1;
+    }
+    > :not(img) {
+      grid-column: 1 / 3;
+      grid-row: 1;
+      place-self: center center;
+    }
+  }
+  .knap {
+    height: fit-content;
+  }
+
+  .text_wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 60%;
+    translate: 20%;
+  }
+}
+
+@container ccontainer (width > 900px) {
+  .c_card {
+    grid-template-columns: repeat(3, 1fr);
+
+    img {
+      grid-column: 2/3;
+      place-self: end end;
+      background-color: var(--bg-col);
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+
+    .text_wrapper {
+      grid-column: 2/4;
+    }
+
+    .grayspace {
+      display: block;
+      background-color: var(--bg-col);
+      width: 100%;
+      height: 100%;
+      grid-column: 1;
+      padding: 0;
+    }
+  }
+}
