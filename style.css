@@ -41,7 +41,8 @@ header nav ul li a:hover {
   container-name: card;
 }
 .a_card {
-  margin: auto;
+  margin-inline: auto;
+  margin-top: 30px;
   background-color: var(--dark-col);
   display: grid;
   resize: vertical;
@@ -296,6 +297,8 @@ label {
 
     .text_wrapper {
       grid-column: 2/4;
+      display: flex;
+      flex-direction: row;
     }
 
     .grayspace {
